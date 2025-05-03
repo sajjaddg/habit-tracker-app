@@ -1,5 +1,7 @@
+import { useRouter } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import IntroItem, { type IIntroItem } from "~/components/intro/intro-item";
 
 const data: IIntroItem[] = [
@@ -20,6 +22,8 @@ const data: IIntroItem[] = [
   },
 ];
 export default function Screen() {
+  const insets = useSafeAreaInsets();
+  const router = useRouter();
   const [index, setIndex] = useState(0);
 
   const activeItem = useMemo(() => data[index], [index]);
@@ -32,14 +36,22 @@ export default function Screen() {
     () => setIndex((prev) => (prev === 0 ? 0 : prev - 1)),
     []
   );
+  const onPressLogin = useCallback(() => router.replace("/login"), []);
 
   return (
-    <SafeAreaView className="flex-1 gap-36">
+    <View className="flex-1 gap-36" style={{ paddingTop: insets.top }}>
       <IntroItem
-        {...{ onPressNext, onPressSkip, onPressBack, ...activeItem }}
+        {...{
+          onPressNext,
+          onPressLogin,
+          onPressSkip,
+          onPressBack,
+          ...activeItem,
+        }}
         showSkip={index !== data.length - 1}
         index={index}
+        isLast={index === data.length - 1}
       />
-    </SafeAreaView>
+    </View>
   );
 }
