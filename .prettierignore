@@ -1,0 +1,15 @@
+.next
+.cache
+package-lock.json
+public
+node_modules
+next-env.d.ts
+next.config.ts
+yarn.lock
+bun.lock
+components.json
+eslint.config.mjs
+postcss.config.mjs
+tsconfig.json
+expo-env.d.ts
+.eslintrc.js

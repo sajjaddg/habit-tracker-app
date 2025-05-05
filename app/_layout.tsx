@@ -1,21 +1,15 @@
-import "~/global.css";
+import "~/global.css"
 
-import {
-  DarkTheme,
-  DefaultTheme,
-  Theme,
-  ThemeProvider,
-} from "@react-navigation/native";
-import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
-import * as React from "react";
-import { Platform, View } from "react-native";
-import { NAV_THEME } from "~/lib/constants";
-import { useColorScheme } from "~/lib/useColorScheme";
-import { PortalHost } from "@rn-primitives/portal";
-import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
-import { useFonts } from "expo-font";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native"
+import { PortalHost } from "@rn-primitives/portal"
+import { useFonts } from "expo-font"
+import { Stack } from "expo-router"
+import { StatusBar } from "expo-status-bar"
+import * as React from "react"
+import { Platform } from "react-native"
+import { setAndroidNavigationBar } from "~/lib/android-navigation-bar"
+import { NAV_THEME } from "~/lib/constants"
+import { useColorScheme } from "~/lib/useColorScheme"
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
@@ -38,36 +32,36 @@ const LIGHT_THEME: Theme = {
       fontWeight: "700",
     },
   },
-};
-const DARK_THEME: Theme = {
-  ...DarkTheme,
-  colors: NAV_THEME.dark,
-  fonts: {
-    regular: {
-      fontFamily: "ClashGroteskRegular",
-      fontWeight: "400",
-    },
-    medium: {
-      fontFamily: "ClashGroteskMedium",
-      fontWeight: "500",
-    },
-    bold: {
-      fontFamily: "ClashGroteskSemibold",
-      fontWeight: "600",
-    },
-    heavy: {
-      fontFamily: "ClashGroteskBold",
-      fontWeight: "700",
-    },
-  },
-};
+}
+// const DARK_THEME: Theme = {
+//   ...DarkTheme,
+//   colors: NAV_THEME.dark,
+//   fonts: {
+//     regular: {
+//       fontFamily: "ClashGroteskRegular",
+//       fontWeight: "400",
+//     },
+//     medium: {
+//       fontFamily: "ClashGroteskMedium",
+//       fontWeight: "500",
+//     },
+//     bold: {
+//       fontFamily: "ClashGroteskSemibold",
+//       fontWeight: "600",
+//     },
+//     heavy: {
+//       fontFamily: "ClashGroteskBold",
+//       fontWeight: "700",
+//     },
+//   },
+// }
 
-export { ErrorBoundary } from "expo-router";
+export { ErrorBoundary } from "expo-router"
 
 export default function RootLayout() {
-  const hasMounted = React.useRef(false);
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
-  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+  const hasMounted = React.useRef(false)
+  const { colorScheme } = useColorScheme()
+  const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false)
 
   const [fontsLoaded] = useFonts({
     ClashGroteskRegular: require("../assets/fonts/ClashGrotesk-Regular.otf"),
@@ -75,24 +69,24 @@ export default function RootLayout() {
     ClashGroteskSemibold: require("../assets/fonts/ClashGrotesk-Semibold.otf"),
     ClashGroteskBold: require("../assets/fonts/ClashGrotesk-Bold.otf"),
     ClashGrotesklight: require("../assets/fonts/ClashGrotesk-Light.otf"),
-  });
+  })
 
   useIsomorphicLayoutEffect(() => {
     if (hasMounted.current) {
-      return;
+      return
     }
 
     if (Platform.OS === "web") {
       // Adds the background color to the html element to prevent white background on overscroll.
-      document.documentElement.classList.add("bg-background");
+      document.documentElement.classList.add("bg-background")
     }
-    setAndroidNavigationBar(colorScheme);
-    setIsColorSchemeLoaded(true);
-    hasMounted.current = true;
-  }, []);
+    setAndroidNavigationBar(colorScheme)
+    setIsColorSchemeLoaded(true)
+    hasMounted.current = true
+  }, [])
 
   if (!isColorSchemeLoaded || !fontsLoaded) {
-    return null;
+    return null
   }
 
   return (
@@ -101,10 +95,7 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }} />
       <PortalHost />
     </ThemeProvider>
-  );
+  )
 }
 
-const useIsomorphicLayoutEffect =
-  Platform.OS === "web" && typeof window === "undefined"
-    ? React.useEffect
-    : React.useLayoutEffect;
+const useIsomorphicLayoutEffect = Platform.OS === "web" && typeof window === "undefined" ? React.useEffect : React.useLayoutEffect

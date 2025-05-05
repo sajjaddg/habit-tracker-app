@@ -10,7 +10,20 @@
     "ios": "expo start -c --ios",
     "web": "expo start -c --web",
     "clean": "rm -rf .expo node_modules",
-    "postinstall": "npx tailwindcss -i ./global.css -o ./node_modules/.cache/nativewind/global.css"
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "postinstall": "npx tailwindcss -i ./global.css -o ./node_modules/.cache/nativewind/global.css",
+    "lint": "eslint ."
+  },
+  "lint-staged": {
+    "*/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*/**/*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@react-navigation/native": "^7.0.0",
@@ -21,7 +34,6 @@
     "@rn-primitives/tooltip": "~1.1.0",
     "@rn-primitives/types": "~1.1.0",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
     "expo": "^52.0.25",
     "expo-font": "~13.0.4",
     "expo-linking": "~7.0.4",
@@ -31,7 +43,6 @@
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "~4.0.7",
     "lucide-react-native": "^0.378.0",
-    "nativewind": "^4.1.23",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native": "0.76.9",
@@ -40,14 +51,26 @@
     "react-native-screens": "~4.4.0",
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13",
-    "tailwind-merge": "^2.2.1",
-    "tailwindcss": "3.3.5",
-    "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@types/react": "~18.3.12",
+    "clsx": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-expo": "~8.0.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-config-universe": "^15.0.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.3.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "nativewind": "^4.1.23",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "3.3.5",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.3.3"
   },
   "private": true
