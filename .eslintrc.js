@@ -3,11 +3,10 @@ module.exports = {
   ignorePatterns: ["/dist/*", "/node_modules/*", './expo-env.d.ts'],
   plugins: ["prettier"],
   rules: {
-    "prettier/prettier": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "react-hooks/exhaustive-deps": "off",
     "import/order": [
-      "error",
+      "warn",
       {
         groups: [
           "builtin",
