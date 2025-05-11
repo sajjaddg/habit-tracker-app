@@ -92,7 +92,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={LIGHT_THEME}>
       <StatusBar style={"dark"} />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack>
+        <Stack.Screen name="(main)" options={{ headerShown: false }} />
+      </Stack>
       <PortalHost />
     </ThemeProvider>
   )
