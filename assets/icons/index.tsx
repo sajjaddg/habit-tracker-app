@@ -3,6 +3,8 @@ import { SvgProps } from "react-native-svg"
 
 import ArrowLeftIcon from "./arrow-left-icon"
 import ArrowRightIcon from "./arrow-right-icon"
+import CircleCheckIcon from "./circle-check-icon"
+import CircleSkipIcon from "./circle-skip-icon"
 import HealthIcon from "./health-icon"
 import HomeIcon from "./home-icon"
 import PlusIcon from "./plus-icon"
@@ -14,6 +16,8 @@ import UserIcon from "./user-icon"
 const icons = {
   "arrow-left": ArrowLeftIcon,
   "arrow-right": ArrowRightIcon,
+  "circle-skip": CircleSkipIcon,
+  "circle-check": CircleCheckIcon,
   health: HealthIcon,
   home: HomeIcon,
   plus: PlusIcon,

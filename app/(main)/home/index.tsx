@@ -2,6 +2,7 @@ import dayjs from "dayjs"
 import { useLocalSearchParams, useRouter } from "expo-router"
 import { useState } from "react"
 import { Text, View } from "react-native"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { CategoryItemProps } from "~/components/home/category/category-item"
 import CategoryList from "~/components/home/category/category-list"
@@ -63,9 +64,11 @@ export default function Screen() {
         <Text className="px-4 font-ClashMedium text-xl">Today</Text>
         <CategoryList activeCategoryId={category ?? "0"} onPressCategory={onPressCategory} data={categories} />
       </View>
-      <View className="px-4">
-        <TaskItem />
-      </View>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <View className="px-4">
+          <TaskItem />
+        </View>
+      </GestureHandlerRootView>
     </SafeAreaView>
   )
 }
