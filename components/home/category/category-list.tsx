@@ -4,8 +4,8 @@ import CategoryItem, { CategoryItemProps } from "./category-item"
 
 type CategoryListProps = {
   data: CategoryItemProps[]
-  activeCategoryId: number
-  onPressCategory: (id: number) => void
+  activeCategoryId: string
+  onPressCategory: (id: string) => void
 }
 const CategoryList: FC<CategoryListProps> = ({ data, activeCategoryId, onPressCategory }) => {
   return (

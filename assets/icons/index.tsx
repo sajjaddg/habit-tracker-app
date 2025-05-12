@@ -5,6 +5,7 @@ import ArrowLeftIcon from "./arrow-left-icon"
 import ArrowRightIcon from "./arrow-right-icon"
 import HealthIcon from "./health-icon"
 import HomeIcon from "./home-icon"
+import PlusIcon from "./plus-icon"
 import ProductivityIcon from "./productivity-icon"
 import ReadingIcon from "./reading-icon"
 import ReportIcon from "./report-icon"
@@ -15,6 +16,7 @@ const icons = {
   "arrow-right": ArrowRightIcon,
   health: HealthIcon,
   home: HomeIcon,
+  plus: PlusIcon,
   productivity: ProductivityIcon,
   reading: ReadingIcon,
   report: ReportIcon,

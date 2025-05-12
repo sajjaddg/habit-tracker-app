@@ -4,7 +4,7 @@ import AppIcon, { IconName } from "~/assets/icons"
 import { cn } from "~/lib/utils"
 
 export type CategoryItemProps = {
-  id: number
+  id: string
   title: string
   icon?: IconName
   isActive?: boolean
