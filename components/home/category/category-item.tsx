@@ -1,6 +1,7 @@
 import { FC } from "react"
-import { Text, TouchableOpacity } from "react-native"
+import { TouchableOpacity } from "react-native"
 import AppIcon, { IconName } from "~/assets/icons"
+import { P } from "~/components/ui/app-text"
 import { cn } from "~/lib/utils"
 
 export type CategoryItemProps = {
@@ -21,7 +22,9 @@ const CategoryItem: FC<CategoryItemProps> = ({ icon, isActive, onPress, title })
       {...{ onPress }}
     >
       {icon ? <AppIcon width={20} height={20} name={icon} color={isActive ? "#fff" : "#202B37"} /> : null}
-      <Text className={cn("font-ClashRegular text-sm text-[#202B37]", isActive && "text-white")}>{title}</Text>
+      <P size="sm" className={cn("text-[#202B37]", isActive && "text-white")}>
+        {title}
+      </P>
     </TouchableOpacity>
   )
 }

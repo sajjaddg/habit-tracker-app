@@ -1,9 +1,10 @@
 import dayjs from "dayjs"
 import React, { useState } from "react"
-import { Text, TouchableOpacity, View } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import Animated, { SlideInRight, SlideInLeft, SlideOutLeft, SlideOutRight } from "react-native-reanimated"
 import ArrowLeft from "~/assets/icons/arrow-left-icon"
 import { cn } from "~/lib/utils"
+import { Caption, P } from "./ui/app-text"
 
 interface WeekCalendarProps {
   selectedDate: dayjs.Dayjs
@@ -45,13 +46,15 @@ export default function WeekCalendar({ selectedDate, onSelectDate }: WeekCalenda
 
   return (
     <View className="justify-center gap-4">
-      <Text className="text-center font-ClashMedium text-[16px] leading-6 text-[#141C24]">{titleMonth}</Text>
+      <P size="m" weight="medium" className="text-center text-[#141C24]">
+        {titleMonth}
+      </P>
 
-      <View className="flex-row justify-between px-11">
+      <View className="flex-row justify-center gap-[2.4rem]">
         {["Sa", "Su", "Mo", "Tu", "We", "Th", "Fr"].map((label) => (
-          <Text key={label} className="font-ClashMedium text-[12px] text-[#97A1AF]">
+          <Caption weight="medium" key={label} className="text-[#97A1AF]">
             {label}
-          </Text>
+          </Caption>
         ))}
       </View>
 
@@ -81,7 +84,9 @@ export default function WeekCalendar({ selectedDate, onSelectDate }: WeekCalenda
                     !isTitleMonth && "opacity-50",
                   )}
                 >
-                  <Text className="font-ClashRegular text-[14px] leading-5 text-[#141C24]">{day.date()}</Text>
+                  <P size="sm" className="text-[#141C24]">
+                    {day.date()}
+                  </P>
                 </TouchableOpacity>
               )
             })}

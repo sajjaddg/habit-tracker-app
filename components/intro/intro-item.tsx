@@ -1,8 +1,9 @@
 import type { FC } from "react"
-import { Text, TouchableOpacity, View } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import ArrowRightIcon from "~/assets/icons/arrow-right-icon"
 import { cn } from "~/lib/utils"
+import { H4, Subtitle } from "../ui/app-text"
 import SkipButton from "./skip-button"
 
 export type IIntroItem = {
@@ -42,8 +43,10 @@ const IntroItem: FC<IIntroItem> = ({
       >
         <View className="">
           <View className="gap-4">
-            <Text className="text-center font-ClashSemibold text-[36px] leading-[44px] text-[#202B37]">{title}</Text>
-            <Text className="text-center font-ClashRegular text-[20px] leading-7 text-[#637083]">{description}</Text>
+            <H4 weight="semiBold" className="text-center text-[#202B37]">
+              {title}
+            </H4>
+            <Subtitle className="text-center text-[#637083]">{description}</Subtitle>
           </View>
           {/*TODO create todo dot :D */}
         </View>
@@ -74,10 +77,10 @@ const Buttons: FC<IButtons> = ({ index, onPressLogin, onPressBack, onPressAsGues
     return (
       <View className="gap-2">
         <TouchableOpacity onPress={onPressLogin} className="rounded-[22px] bg-[#141C24] py-2.5">
-          <Text className="text-center font-ClashRegular text-[16px] text-white">Login</Text>
+          <Subtitle className="text-center text-white">Login</Subtitle>
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressAsGuest} className="rounded-[22px] border border-[#141C24] py-2.5">
-          <Text className="text-center font-ClashRegular text-[16px] text-[#141C24]">Continue as a guest</Text>
+          <Subtitle className="text-center text-[#141C24]">Continue as a guest</Subtitle>
         </TouchableOpacity>
       </View>
     )
@@ -100,13 +103,13 @@ const Buttons: FC<IButtons> = ({ index, onPressLogin, onPressBack, onPressAsGues
             transform: [{ rotate: "180deg" }],
           }}
         />
-        <Text className="font-ClashRegular text-[16px] text-[#141C24]">Back</Text>
+        <Subtitle className="text-[#141C24]">Back</Subtitle>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={onPressNext}
         className="flex-row items-center gap-2 self-end rounded-[22px] bg-[#141C24] py-2.5 pe-[18px] ps-[23px]"
       >
-        <Text className="font-ClashRegular text-[16px] text-white">Next</Text>
+        <Subtitle className="text-white">Next</Subtitle>
         <ArrowRightIcon color="#fff" width={24} height={24} />
       </TouchableOpacity>
     </View>

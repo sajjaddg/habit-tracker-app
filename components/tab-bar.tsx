@@ -1,8 +1,9 @@
 import { Link, LinkProps, usePathname } from "expo-router"
 import { FC, useEffect } from "react"
-import { View, Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
+import { View, TouchableOpacity, TouchableOpacityProps } from "react-native"
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withDelay, withTiming } from "react-native-reanimated"
 import AppIcon, { IconName } from "~/assets/icons"
+import { P } from "./ui/app-text"
 
 const AnimatedTabBar = () => {
   const pathname = usePathname()
@@ -78,7 +79,9 @@ const TabItem: FC<TabItemProps> = ({ title, icon, isActive, href, ...props }) =>
       <TouchableOpacity className="h-11 flex-row items-center justify-center gap-2 overflow-hidden px-2.5" {...touchableProps}>
         <AppIcon name={icon} color={isActive ? "white" : "#97A1AF"} width={24} height={24} />
         <Animated.View style={[animatedStyle]}>
-          <Text className="font-ClashMedium text-white">{title}</Text>
+          <P size="m" className="text-white">
+            {title}
+          </P>
         </Animated.View>
       </TouchableOpacity>
     </Link>

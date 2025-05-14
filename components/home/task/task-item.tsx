@@ -1,8 +1,9 @@
 import { useRouter } from "expo-router"
-import { Pressable, Text, TouchableOpacity, View } from "react-native"
+import { Pressable, TouchableOpacity, View } from "react-native"
 import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable"
 import { PieChart, pieDataItem } from "react-native-gifted-charts"
 import AppIcon from "~/assets/icons"
+import { P } from "~/components/ui/app-text"
 import { CategoryItemProps } from "../category/category-item"
 
 const TaskItem = () => {
@@ -19,7 +20,9 @@ const TaskItem = () => {
         <View className="h-[32px] w-[32px] items-center justify-center rounded-full bg-[#B3E5CC]">
           <AppIcon name="circle-check" width={20} height={20} color="#40BF7F" />
         </View>
-        <Text className="font-ClashRegular text-lg text-[#39AC73]">Done</Text>
+        <P size="lg" className="text-[#39AC73]">
+          Done
+        </P>
       </TouchableOpacity>
     )
   }
@@ -30,7 +33,9 @@ const TaskItem = () => {
         <View className="h-[32px] w-[32px] items-center justify-center rounded-full bg-[#CED2DA]">
           <AppIcon name="circle-skip" width={20} height={20} color="#637083" />
         </View>
-        <Text className="font-ClashRegular text-lg text-[#637083]">Skip</Text>
+        <P size="lg" className="text-[#637083]">
+          Skip
+        </P>
       </TouchableOpacity>
     )
   }
@@ -50,21 +55,25 @@ const TaskItem = () => {
             innerRadius={24}
             data={animatedPieData}
             centerLabelComponent={() => {
-              return <Text className="font-ClashRegular text-sm text-[#637083]">{`${progress}%`}</Text>
+              return <P className="text-[#637083]">{`${progress}%`}</P>
             }}
           />
         </View>
         <View className="flex-1 gap-1">
           <View className="flex-row items-center justify-between">
-            <CategoryButton title="Reading" icon="reading" id={"1"} />
+            <CategoryButton title="Reading" icon="reading" id="1" />
             <View className="flex-row items-center gap-2">
-              <Text className="font-ClashRegular text-sm text-[#637083]">2/10 Pages</Text>
+              <P size="sm" className="text-[#637083]">
+                2/10 Pages
+              </P>
               <TouchableOpacity className="h-[32px] w-[32px] items-center justify-center rounded-full bg-[#141C24]">
                 <AppIcon width={20} height={20} name="plus" color="#fff" />
               </TouchableOpacity>
             </View>
           </View>
-          <Text className="font-ClashMedium text-lg text-[#141C24]">Read 20 pages</Text>
+          <P size="lg" weight="medium" className="text-[#141C24]">
+            Read 20 pages
+          </P>
         </View>
       </Pressable>
     </ReanimatedSwipeable>
@@ -82,7 +91,9 @@ const CategoryButton = ({ title, icon, id }: CategoryItemProps) => {
       onPress={onPress}
     >
       {icon ? <AppIcon width={20} height={20} name={icon} color="#202B37" /> : null}
-      <Text className="font-ClashRegular text-sm text-[#202B37]">{title}</Text>
+      <P size="sm" className="text-[#202B37]">
+        {title}
+      </P>
     </TouchableOpacity>
   )
 }
